@@ -22,28 +22,30 @@ function App() {
 
     return (
       <>
-      <h1>Corodinsite Jupiterienne</h1>
-      <div className="interface">
-          <div className="moon">
-              <label>Cadran de la lune</label>
-              <input type={'number'} max={2} min={1} value={moon.value}
-                     onChange={handleInputChange(setMoon)}/>
+          <div className="interface">
+              <h1>Corodinsite Jupiterienne</h1>
+              <div className="moon">
+                  <label>Cadran de la lune</label>
+                  <input type={'number'} max={2} min={1} value={moon.value}
+                         onChange={handleInputChange(setMoon)}/>
+              </div>
+              <div className="sun">
+                  <label>Cadran du soleil</label>
+                  <input type={'number'} max={2} min={1} value={sun.value}
+                         onChange={handleInputChange(setSun)}/>
+              </div>
+              <div className="earth">
+                  <label>Cadran de la terre</label>
+                  <input type={'number'} max={2} min={1} value={earth.value}
+                         onChange={handleInputChange(setEarth)}/>
+              </div>
+              <button className="calculate-value-button" onClick={handleCalculate} disabled={isButtonDisabled}>Calculer
+                  l'heure jupiterienne
+              </button>
+              {result && <div className="result">Résultat : {result}</div>}
           </div>
-          <div className="sun">
-              <label>Cadran du soleil</label>
-              <input type={'number'} max={2} min={1} value={sun.value}
-                     onChange={handleInputChange(setSun)}/>
-          </div>
-          <div className="earth">
-              <label>Cadran de la terre</label>
-              <input type={'number'} max={2} min={1} value={earth.value}
-                     onChange={handleInputChange(setEarth)}/>
-          </div>
-          <button className="calculate-value-button" onClick={handleCalculate} disabled={isButtonDisabled}>Calculer l'heure jupiterienne</button>
-          {result && <div className="result">Résultat : {result}</div>}
-      </div>
-</>
-)
+      </>
+    )
 }
 
 export default App
