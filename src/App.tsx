@@ -39,7 +39,7 @@ function App() {
               <input type={'number'} max={2} min={1} value={earth.value}
                      onChange={handleInputChange(setEarth)}/>
           </div>
-          <button onClick={handleCalculate} disabled={isButtonDisabled}>Calculer l'heure jupiterienne</button>
+          <button className="calculate-value-button" onClick={handleCalculate} disabled={isButtonDisabled}>Calculer l'heure jupiterienne</button>
           {result && <div className="result">Résultat : {result}</div>}
       </div>
 </>
