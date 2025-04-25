@@ -8,6 +8,8 @@ Résultats après avoir lancé les tests e2e pour l'interface graphique :
 Les tests passent tous comme prévu sauf le premier (should have disabled button when no inputs), qui finit par renvoyer une erreur liée au dépassement du timeout.
 J'ai essayé de mettre un nombre très élevé pour le timeout mais ça ne change rien.
 
+Résultats pour les tests e2e avec screenshots : OK
+
 Instructions pour lancer le projet : 
 - Installer les dépendances : 
 ```bash
