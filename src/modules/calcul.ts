@@ -41,6 +41,7 @@ export function getJupiterHour (
         console.log("Après application des pouvoirs de la terre :", result);
     }
 
+    console.log("Résultat final :", result);
     if (result <= 2) {
         jupiterHour = "mortin";
     } else if (result <= 4) {

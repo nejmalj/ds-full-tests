@@ -51,7 +51,7 @@ const mocks = [
                 isActivated: true,
             }
         },
-        result: "soirning",
+        result: "nuight",
     }
 ]
 
