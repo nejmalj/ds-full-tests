@@ -1,35 +1,42 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { getJupiterHour } from "./modules/calcul.ts";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [moon, setMoon] = useState({ value: 1, isActivated: true });
+  const [sun, setSun] = useState({ value: 1, isActivated: true });
+  const [earth, setEarth] = useState({ value: 1, isActivated: true });
+  const [result, setResult] = useState("");
+
+  const handleCalculate = () => {
+      const jupiterHour = getJupiterHour(moon, sun, earth);
+      setResult(jupiterHour);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <>
+      <h1>Corodinsite Jupiterienne</h1>
+      <div className="interface">
+          <div className="moon">
+              <label>Cadran de la lune</label>
+              <input type={'number'} max={2} min={1} value={moon.value}
+                     onChange={(e) => setMoon({...moon, value: parseInt(e.target.value)})}/>
+          </div>
+          <div className="sun">
+              <label>Cadran du soleil</label>
+              <input type={'number'} max={2} min={1} value={sun.value}
+                     onChange={(e) => setSun({...sun, value: parseInt(e.target.value)})}/>
+          </div>
+          <div className="earth">
+              <label>Cadran de la terre</label>
+              <input type={'number'} max={2} min={1} value={earth.value}
+                     onChange={(e) => setEarth({...earth, value: parseInt(e.target.value)})}/>
+          </div>
+          <button onClick={handleCalculate}>Calculer l'heure jupiterienne</button>
+          {result && <div className="result">Résultat : {result}</div>}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+</>
+)
 }
 
 export default App
