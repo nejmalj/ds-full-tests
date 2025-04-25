@@ -13,26 +13,33 @@ function App() {
       setResult(jupiterHour);
   };
 
-  return (
+  const isButtonDisabled = !moon.value || !sun.value || !earth.value;
+
+  const handleInputChange = (inputSet) => (e) => {
+      const value = Math.max(1, Math.min(2, parseInt(e.target.value) || 0));
+      inputSet((prev) => ({ ...prev, value }));
+  };
+
+    return (
       <>
       <h1>Corodinsite Jupiterienne</h1>
       <div className="interface">
           <div className="moon">
               <label>Cadran de la lune</label>
               <input type={'number'} max={2} min={1} value={moon.value}
-                     onChange={(e) => setMoon({...moon, value: parseInt(e.target.value)})}/>
+                     onChange={handleInputChange(setMoon)}/>
           </div>
           <div className="sun">
               <label>Cadran du soleil</label>
               <input type={'number'} max={2} min={1} value={sun.value}
-                     onChange={(e) => setSun({...sun, value: parseInt(e.target.value)})}/>
+                     onChange={handleInputChange(setSun)}/>
           </div>
           <div className="earth">
               <label>Cadran de la terre</label>
               <input type={'number'} max={2} min={1} value={earth.value}
-                     onChange={(e) => setEarth({...earth, value: parseInt(e.target.value)})}/>
+                     onChange={handleInputChange(setEarth)}/>
           </div>
-          <button onClick={handleCalculate}>Calculer l'heure jupiterienne</button>
+          <button onClick={handleCalculate} disabled={isButtonDisabled}>Calculer l'heure jupiterienne</button>
           {result && <div className="result">Résultat : {result}</div>}
       </div>
 </>
